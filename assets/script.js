@@ -36,3 +36,23 @@ arrow_right.addEventListener('click', () => {
 	i++;
 	console.log(i);
 })
+
+/*Compte le nombre de slide*/
+
+const nbslides = slides.length;
+
+/*Récupère la div "dots"*/
+
+let dots = document.querySelector('.dots');
+
+/*Créer les bullets points*/
+
+let compteur=0;
+while (compteur<nbslides){
+	compteur++;
+	let dot = document.createElement("p");
+	dots.appendChild(dot);
+	dot.classList.add("dot");
+	dot.classList.add("dot_"+[compteur]);
+}
+
