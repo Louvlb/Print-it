@@ -20,26 +20,38 @@ const slides = [
 
 const arrow_left = document.querySelector('.arrow_left');
 const arrow_right = document.querySelector('.arrow_right');
+const banner_img = document.querySelector('.banner-img');
+const banner_p = document.querySelector('#banner p');
+
+/*Compte le nombre de slide*/
+
+const nbslides = slides.length;
 
 let i = 0;
 
 /*Écoute du click sur la flèche gauche*/
 
 arrow_left.addEventListener('click', () => {
-	i--;
+	if(i>0-nbslides)
+		i--;
+	else
+		i=0;
 	console.log(i);
+	banner_img.style.transform = 'translateX(' + (i*1920) + 'px)';
+	banner_p.style.transform = 'translateX(' + (i*1920) + 'px)';
 })
 
 /*Écoute du click sur la flèche droite*/
 
 arrow_right.addEventListener('click', () => {
-	i++;
+	if(i<nbslides)
+		i++;
+	else
+		i=0;
 	console.log(i);
+	banner_img.style.transform = 'translateX(-' + (i*1920) + 'px)';
+	banner_p.style.transform = 'translateX(-' + (i*1920) + 'px)';
 })
-
-/*Compte le nombre de slide*/
-
-const nbslides = slides.length;
 
 /*Récupère la div "dots"*/
 
