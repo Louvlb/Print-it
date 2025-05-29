@@ -32,25 +32,38 @@ let i = 0;
 /*Écoute du click sur la flèche gauche*/
 
 arrow_left.addEventListener('click', () => {
-	if(i>0-nbslides)
-		i--;
-	else
-		i=0;
+
+	i--;
+	if (i < 0) {
+		i = slides.length - 1;
+	}
 	console.log(i);
-	banner_img.style.transform = 'translateX(' + (i*1920) + 'px)';
-	banner_p.style.transform = 'translateX(' + (i*1920) + 'px)';
+
+	let src_image = './assets/images/slideshow/' + slides[i].image;
+	console.log(src_image);
+	banner_img.setAttribute("src", src_image);
+
+	let tagLine = slides[i].tagLine;
+	console.log(tagLine);
+	banner_p.innerHTML = tagLine;
 })
 
 /*Écoute du click sur la flèche droite*/
 
 arrow_right.addEventListener('click', () => {
-	if(i<nbslides)
-		i++;
-	else
-		i=0;
+	i++;
+	if (i >= slides.length) {
+		i = 0;
+	}
 	console.log(i);
-	banner_img.style.transform = 'translateX(-' + (i*1920) + 'px)';
-	banner_p.style.transform = 'translateX(-' + (i*1920) + 'px)';
+
+	let src_image = './assets/images/slideshow/' + slides[i].image;
+	console.log(src_image);
+	banner_img.setAttribute("src", src_image);
+
+	let tagLine = slides[i].tagLine;
+	console.log(tagLine);
+	banner_p.innerHTML = tagLine;
 })
 
 /*Récupère la div "dots"*/

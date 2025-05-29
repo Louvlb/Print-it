@@ -110,6 +110,7 @@ header {
 	width: 100%;
 	min-height: 470px;
 	position: relative;
+	transition: transform 0.5s;
 }
 .banner-img {
 	position: absolute;
