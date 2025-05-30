@@ -66,7 +66,7 @@ while (compteur<nbslides){
 arrow_left.addEventListener('click', () => {
 	//Décompte de i
 	i--;
-	//Création de la limite de i
+	//Création de la limite de i pour défilement infini
 	if (i < 0) {
 		i = slides.length - 1;
 	}
@@ -93,7 +93,7 @@ arrow_left.addEventListener('click', () => {
 arrow_right.addEventListener('click', () => {
 	//Décompte de i
 	i++;
-	//Création de la limite de i
+	//Création de la limite de i pour défilement infini
 	if (i >= slides.length) {
 		i = 0;
 	}
