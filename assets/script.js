@@ -38,6 +38,9 @@ let i = 0;
 //Récupère la div "dots"
 let dots = document.querySelector('.dots');
 
+//Créer un tableau pour conserver les numéros des dot
+const dotElements = [];
+
 //Initialise le compteur
 let compteur=0;
 
@@ -50,8 +53,12 @@ while (compteur<nbslides){
 	dots.appendChild(dot);
 	//Lui ajoute la class dot
 	dot.classList.add("dot");
-	//Lui ajoute la class dot_x
-	dot.classList.add("dot_"+[compteur]);
+	
+	//Ajoute le dot dans le tableau
+	dotElements.push(dot);
+
+	//Ajout l'effet sélectionner au premier dot dès le chragement de la page
+	updateDots();
 }
 
 /*Création de l'effet de slider à gauche*/
@@ -76,6 +83,9 @@ arrow_left.addEventListener('click', () => {
 	console.log(tagLine);
 	//Remplacement du texte
 	banner_p.innerHTML = tagLine;
+
+	// Mise à jour des bullet points
+	updateDots();
 })
 
 /*Création de l'effet de slider à droite*/
@@ -100,4 +110,22 @@ arrow_right.addEventListener('click', () => {
 	console.log(tagLine);
 	//Remplacement du texte
 	banner_p.innerHTML = tagLine;
+
+	// Mise à jour des bullet points
+	updateDots();
 })
+
+/*Fonction pour ajouter l'effet sélectionner aux bullet points*/
+
+function updateDots() {
+	//Va chercher les dot dans le tableau avec leur index
+	dotElements.forEach((dot, index) => {
+		if (index === i) {
+			//Ajoute la class=dot_selected au dot sélectionné
+			dot.classList.add("dot_selected");
+		} else {
+			//Retire la class=dot_selected aux dot non-sélectionnés
+			dot.classList.remove("dot_selected");
+		}
+	});
+}
